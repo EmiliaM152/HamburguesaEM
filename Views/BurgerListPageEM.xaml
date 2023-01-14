@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="HamburguesaEM.Views.BurgerListPageEM"
+             xmlns:models="clr-namespace:HamburguesaEM.Models"
+             Title="Listas de Hamburguesas EM">
+    <Grid RowDefinitions="*,Auto">
+        <CollectionView x:Name="burgerListEM">
+            <CollectionView.ItemTemplate>
+                <DataTemplate x:DataType="models:BurgerEM">
+                    <VerticalStackLayout>
+                        <BoxView Color="White" HeightRequest="20"/>
+                        <Grid ColumnDefinitions="*,2*" RowDefinitions="*,*,*">
+                            <Label Grid.Column="0" Grid.Row="0" HorizontalOptions="Start" Text="{Binding Id}" />
+                            <Label Grid.Column="1" Grid.Row="0" FontAttributes="Bold" FontSize="18" Text="{Binding Name}" />
+                            <Label Grid.Column="0" Grid.Row="1" FontAttributes="Bold" Text="Descripción:"/>
+                            <Label Grid.Column="1" Grid.Row="1" Text="{Binding Description}" />
+                            <Label Grid.Column="0" Grid.Row="2" FontAttributes="Bold" Text="¿Lleva queso?"/>
+                            <Label Grid.Column="1" Grid.Row="2" Text="{Binding WithExtraCheese}" />
+                        </Grid>
+                        <BoxView Color="Black" HeightRequest="20"/>
+                        <BoxView Color="YellowGreen" HeightRequest="1"/>
+                    </VerticalStackLayout>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+        <Grid Grid.Row="1" ColumnDefinitions="*,*" BackgroundColor="#f2f2f4">
+            <Button Grid.Row="0" Grid.Column="1" 
+                    Text="Añadir nuevo registro" 
+                    Clicked="OnItemAddedEM" 
+                    FontAttributes="Bold"
+                    Margin="20"
+                    CornerRadius="20"/>
+            <Button Grid.Row="0" Grid.Column="0" 
+                    BackgroundColor="White"
+                    TextColor="#512bd4"
+                    BorderColor="#512bd4"
+                    BorderWidth="1"
+                    Text="Actualizar Pedidos" 
+                    FontAttributes="Bold"
+                    Clicked="ActualizarDatos" 
+                    Margin="20"
+                    CornerRadius="20"/>
+        </Grid>
+    </Grid>
+</ContentPage>

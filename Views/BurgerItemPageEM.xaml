@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="HamburguesaEM.Views.BurgerItemPageEM"
+             xmlns:models="clr-namespace:HamburguesaEM.Models"
+             Title="Burger Item EM">
+    <ScrollView>
+        <VerticalStackLayout Padding="20"
+                             Spacing="10"
+                            VerticalOptions="StartAndExpand">   
+            <Label Text="Ingresar Nombre de Hamburguesa" />
+            <Entry x:Name="nameEM" Text="{Binding Name}" />
+            <Label Text="Descripción de la Hamburguesa" />
+            <Entry x:Name="descEM" Text="{Binding Description}" />
+            <Label Text="¿Con queso extra?" />
+            <CheckBox x:Name="check"
+                        CheckedChanged="OnCheckBoxCheckedChangedEM" />
+            <Button BackgroundColor="YellowGreen"
+                    Text="Guardar"
+                    Clicked="OnSaveClickedEM" />
+            <Button  BackgroundColor="YellowGreen"
+                    Text="Eliminar"
+                    Clicked="DeleteButtonClickedEM" />
+            <Button  BackgroundColor="YellowGreen"
+                    Text="Cancelar"
+                    Clicked="OnCancelClickedEM" />
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>
