@@ -4,33 +4,35 @@
              x:Class="HamburguesaEM.Views.BurgerListPageEM"
              xmlns:models="clr-namespace:HamburguesaEM.Models"
              Title="Listas de Hamburguesas EM">
-    <Grid RowDefinitions="*,Auto">
-        <CollectionView x:Name="burgerListEM">
+       <Grid RowDefinitions="*,Auto">
+          <CollectionView x:Name="burgerListEM"
+                          Margin="10"
+                          SelectionMode="Single"
+                          SelectionChanged="EMselected">
             <CollectionView.ItemTemplate>
-                <DataTemplate x:DataType="models:BurgerEM">
+                 <DataTemplate x:DataType="models:BurgerEM">
                     <VerticalStackLayout>
                         <BoxView Color="White" HeightRequest="20"/>
                         <Grid ColumnDefinitions="*,2*" RowDefinitions="*,*,*">
                             <Label Grid.Column="0" Grid.Row="0" HorizontalOptions="Start" Text="{Binding Id}" />
                             <Label Grid.Column="1" Grid.Row="0" FontAttributes="Bold" FontSize="18" Text="{Binding Name}" />
-                            <Label Grid.Column="0" Grid.Row="1" FontAttributes="Bold" Text="Descripción:"/>
-                            <Label Grid.Column="1" Grid.Row="1" Text="{Binding Description}" />
-                            <Label Grid.Column="0" Grid.Row="2" FontAttributes="Bold" Text="¿Lleva queso?"/>
-                            <Label Grid.Column="1" Grid.Row="2" Text="{Binding WithExtraCheese}" />
                         </Grid>
                         <BoxView Color="Black" HeightRequest="20"/>
                         <BoxView Color="YellowGreen" HeightRequest="1"/>
                     </VerticalStackLayout>
-                </DataTemplate>
+                    </DataTemplate>
             </CollectionView.ItemTemplate>
-        </CollectionView>
+          </CollectionView>
+           
         <Grid Grid.Row="1" ColumnDefinitions="*,*" BackgroundColor="#f2f2f4">
+             <BoxView Color="YellowGreen" HeightRequest="1"/>
             <Button Grid.Row="0" Grid.Column="1" 
                     Text="Añadir nuevo registro" 
                     Clicked="OnItemAddedEM" 
                     FontAttributes="Bold"
                     Margin="20"
                     CornerRadius="20"/>
+            
             <Button Grid.Row="0" Grid.Column="0" 
                     BackgroundColor="White"
                     TextColor="#512bd4"

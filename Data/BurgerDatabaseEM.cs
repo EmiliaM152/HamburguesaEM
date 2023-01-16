@@ -1,4 +1,5 @@
 ﻿using HamburguesaEM.Models;
+using HamburguesaEM.Views;
 using SQLite;
 using System;
 using System.Collections.Generic;
@@ -12,9 +13,11 @@ namespace HamburguesaEM.Data
     {
         string _dbPath;
         private SQLiteConnection conn;
+        //private List<BurgerEM> burgers;
         public BurgerDatabaseEM(string DatabasePath)
         {
             _dbPath = DatabasePath;
+            //burgers = new List<BurgerEM>();
         }
 
         private void Init()
@@ -26,9 +29,16 @@ namespace HamburguesaEM.Data
         }
         public int AddNewBurger(BurgerEM burger)
         {
+            if (burger.Id != 0)
+                return conn.Update(burger);
+            else
+                return conn.Insert(burger);
+        }
+
+        public int DeleteBurger(BurgerEM burger)
+        {
             Init();
-            int result = conn.Insert(burger);
-            return result;
+            return conn.Delete(burger);
         }
         public List<BurgerEM> GetAllBurgers()
         {
@@ -36,5 +46,6 @@ namespace HamburguesaEM.Data
             List<BurgerEM> burgers = conn.Table<BurgerEM>().ToList();
             return burgers;
         }
+
     }
 }

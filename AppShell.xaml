@@ -14,7 +14,7 @@
         />
 
     <ShellContent
-        Title="Burger Item Page"
+        Title="Emilia Morejón Burger Page"
         ContentTemplate="{DataTemplate views:BurgerItemPageEM}"
         Route="BurgerItemPage" 
         />

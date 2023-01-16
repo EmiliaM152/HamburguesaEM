@@ -3,27 +3,32 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="HamburguesaEM.Views.BurgerItemPageEM"
              xmlns:models="clr-namespace:HamburguesaEM.Models"
-             Title="Burger Item EM">
+             Title="Pedidos de Hamburguesa EM">
+    <ContentPage.BindingContext>
+        <models:BurgerEM/>
+    </ContentPage.BindingContext>
     <ScrollView>
-        <VerticalStackLayout Padding="20"
-                             Spacing="10"
-                            VerticalOptions="StartAndExpand">   
-            <Label Text="Ingresar Nombre de Hamburguesa" />
-            <Entry x:Name="nameEM" Text="{Binding Name}" />
-            <Label Text="Descripción de la Hamburguesa" />
-            <Entry x:Name="descEM" Text="{Binding Description}" />
+        <VerticalStackLayout Padding="20" 
+                             Spacing="10" 
+                             VerticalOptions="StartAndExpand">
+            <Label Text="Nombre" />
+            <Entry x:Name="nameEM" Text="{Binding Name}"/>
+            <Label Text="Description" />
+            <Entry x:Name="descEM" Text="{Binding Description}"/>
             <Label Text="¿Con queso extra?" />
-            <CheckBox x:Name="check"
-                        CheckedChanged="OnCheckBoxCheckedChangedEM" />
+            <CheckBox x:Name="check" 
+                      CheckedChanged="CheckedChangedEM" 
+                      IsChecked="{Binding WithExtraCheese}"/>
             <Button BackgroundColor="YellowGreen"
-                    Text="Guardar"
+                    Text="Guardar" 
                     Clicked="OnSaveClickedEM" />
-            <Button  BackgroundColor="YellowGreen"
-                    Text="Eliminar"
-                    Clicked="DeleteButtonClickedEM" />
-            <Button  BackgroundColor="YellowGreen"
-                    Text="Cancelar"
-                    Clicked="OnCancelClickedEM" />
+            <Button BackgroundColor="YellowGreen"
+                    Text="Cancelar" 
+                    Clicked="CancelClickedEM" />
+            <Button BackgroundColor="YellowGreen"
+                    Text="Eliminar" 
+                    Clicked="OnDeleteClickedEM" />
+            
         </VerticalStackLayout>
     </ScrollView>
 </ContentPage>

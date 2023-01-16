@@ -1,40 +1,58 @@
+using HamburguesaEM.Data;
 using HamburguesaEM.Models;
+
 namespace HamburguesaEM.Views;
 
+[QueryProperty(nameof(EMaux), "Aux")]
 public partial class BurgerItemPageEM : ContentPage
 {
     BurgerEM Item = new BurgerEM();
+    BurgerEM Aux = new BurgerEM();
     bool _flag;
+
     public BurgerItemPageEM()
 	{
 		InitializeComponent();
-	}
-    private void OnSaveClickedEM(object sender, EventArgs e)
+       
+    }
+    public BurgerEM EMaux
     {
+        get => Aux;
+        set
+        {
+            Aux = value;
+        }
+    }
+
+    private async void OnSaveClickedEM(object sender, EventArgs e)
+    {
+        Item = Aux;
         Item.Name = nameEM.Text;
         Item.Description = descEM.Text;
-        Item.WithExtraCheese = _flag;
+        Item.WithExtraCheese = _flag ;
+
+        if (string.IsNullOrEmpty(Item.Name) || string.IsNullOrEmpty(Item.Description))
+        {
+            return;
+        }
         App.BurgerRepoEM.AddNewBurger(Item);
-        Shell.Current.GoToAsync("..");
+        await Shell.Current.GoToAsync("..");
     }
-    private void OnCancelClickedEM(object sender, EventArgs e)
+
+    private async void CancelClickedEM(object sender, EventArgs e)
     {
-        Shell.Current.GoToAsync("..");
+        await Shell.Current.GoToAsync("..");
     }
-    private void OnCheckBoxCheckedChangedEM(object sender, CheckedChangedEventArgs e)
+    private void CheckedChangedEM(object sender, CheckedChangedEventArgs e)
     {
         _flag = e.Value;
     }
-
-    private async void DeleteButtonClickedEM(object sender, EventArgs e)
+      
+    private async void OnDeleteClickedEM(object sender, EventArgs e)
     {
-        if (BindingContext is Models.BurgerEM hambEM)
-        {
-            // Delete the file.
-            if (File.Exists(hambEM.Name))
-                File.Delete(hambEM.Name);
-        }
+    Item = Aux;
+    App.BurgerRepoEM.DeleteBurger(Item);
+    await Shell.Current.GoToAsync("..");
     
-        await Shell.Current.GoToAsync("..");
     }
 }
