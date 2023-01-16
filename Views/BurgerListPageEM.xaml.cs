@@ -16,7 +16,7 @@ public partial class BurgerListPageEM : ContentPage
     }
     private async void OnItemAddedEM(object sender, EventArgs e)
     {
-        await Shell.Current.GoToAsync("Burger");
+        await Shell.Current.GoToAsync(nameof(BurgerItemPageEM));
     }
 
     private void ActualizarDatos(object sender, EventArgs e)
