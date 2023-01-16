@@ -18,10 +18,7 @@ public partial class BurgerItemPageEM : ContentPage
     public BurgerEM EMaux
     {
         get => Aux;
-        set
-        {
-            Aux = value;
-        }
+        set=>Aux = value;
     }
 
     private async void OnSaveClickedEM(object sender, EventArgs e)
@@ -50,9 +47,9 @@ public partial class BurgerItemPageEM : ContentPage
       
     private async void OnDeleteClickedEM(object sender, EventArgs e)
     {
-    Item = Aux;
-    App.BurgerRepoEM.DeleteBurger(Item);
-    await Shell.Current.GoToAsync("..");
+	    Item = Aux;
+	    App.BurgerRepoEM.DeleteBurger(Item);
+	    await Shell.Current.GoToAsync("..");
     
     }
 }
